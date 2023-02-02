@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
+set (CMAKE_CXX_STANDARD 11)
 project(cv_bridge)
 
 find_package(catkin REQUIRED COMPONENTS rosconsole sensor_msgs)
@@ -14,13 +15,16 @@ else()
 find_package(Boost REQUIRED)
 endif()
 
-find_package(OpenCV REQUIRED
+set(CV_MAJOR_VERSION=4.5.5)
+set(OpenCV_DIR=/usr/include/opencv4)
+find_package(OpenCV 4.5.5 REQUIRED
   COMPONENTS
-    opencv_core
-    opencv_imgproc
-    opencv_imgcodecs
+    core
+    imgproc
+    imgcodecs
   CONFIG
 )
+
 
 catkin_package(
   INCLUDE_DIRS include
